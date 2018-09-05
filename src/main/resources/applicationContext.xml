@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:apollo="http://www.ctrip.com/schema/apollo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.ctrip.com/schema/apollo http://www.ctrip.com/schema/apollo.xsd">
+
+    <!-- 启动Apollo -->
+    <apollo:config namespaces="application"/>
+
+    <!-- 注入自定义的业务类 -->
+    <bean id="propertyService" class="com.example.service.PropertyService">
+        <property name="dbName" value="${dbName: default value}"/>
+        <property name="dbUrl" value="${dbUrl: default value}"/>
+        <property name="serverName" value="${servername: default value}"/>
+    </bean>
+
+</beans>
