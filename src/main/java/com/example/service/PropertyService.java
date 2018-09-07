@@ -51,9 +51,7 @@ public class PropertyService {
     }
 
     public void getConfig() {
-        logger.info("dbName = {}", dbName);
-        logger.info("dbUrl = {}", dbUrl);
-        logger.info("serverName = {}", serverName);
+        logger.info("dbName = {}，dbUrl = {}，serverName = {}", dbName, dbUrl, serverName);
     }
 
 }
