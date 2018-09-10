@@ -5,23 +5,15 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd http://www.ctrip.com/schema/apollo http://www.ctrip.com/schema/apollo.xsd">
 
-    <!-- 启动Apollo -->
-    <apollo:config namespaces="application"/>
+    <!-- 启动Apollo 使用默认配置不需要写namespace，若使用公共namespace则需要写-->
+    <apollo:config />
 
-    <!-- 注入自定义的业务类 -->
-    <bean id="propertyService" class="com.example.service.PropertyService">
-        <property name="dbName" value="${dbName: default value}"/>
-        <property name="dbUrl" value="${dbUrl: default value}"/>
-        <property name="serverName" value="${servername: default value}"/>
-    </bean>
-
-    <bean class="com.example.processor.ListBeanDefinitionProcessor" />
-
+    <!-- 模拟实际应用，使用连接池 -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <!-- 基本属性 url、user、password -->
-        <property name="url" value="${jdbc_url}" />
-        <property name="username" value="${jdbc_user}" />
-        <property name="password" value="${jdbc_password}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.user}" />
+        <property name="password" value="${jdbc.password}" />
 
         <!-- 配置初始化大小、最小、最大 -->
         <property name="initialSize" value="${initialSize:1}" />
@@ -41,15 +33,21 @@
         <property name="testOnBorrow" value="false" />
         <property name="testOnReturn" value="false" />
 
-        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
-        <property name="poolPreparedStatements" value="true" />
-        <property name="maxPoolPreparedStatementPerConnectionSize" value="${maxPoolPreparedStatementPerConnectionSize : 20}" />
-
+        <!-- 是否打开PSCache，并且指定每个连接上PSCache的大小 -->
+        <property name="poolPreparedStatements" value="false" />
         <!-- 配置监控统计拦截的filters -->
         <property name="filters" value="stat" />
     </bean>
 
+    <!-- 配置业务Bean -->
+    <bean id="user" class="com.example.bean.User">
+        <property name="userName" value="${userName}" />
+        <property name="age" value="${age}" />
+        <property name="address" value="${address}" />
+    </bean>
+
     <bean id="userService" class="com.example.service.UserService">
+        <property name="user" ref="user" />
         <property name="dataSource" ref="dataSource" />
     </bean>
 

@@ -18,8 +18,9 @@ public class Main {
                 e.printStackTrace();
             }
             us.selectUser();
-        }
+            us.printUserInfo();
 
+        }
 
     }
 

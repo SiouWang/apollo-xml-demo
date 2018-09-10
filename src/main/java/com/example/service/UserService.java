@@ -1,8 +1,11 @@
 package com.example.service;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.example.bean.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.lang.reflect.Field;
 import java.sql.Connection;
@@ -14,7 +17,17 @@ public class UserService {
 
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
+    private User user;
+
     private DruidDataSource dataSource;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public DruidDataSource getDataSource() {
         return dataSource;
@@ -24,22 +37,27 @@ public class UserService {
         this.dataSource = dataSource;
     }
 
+    /**
+     * 打印属性值
+     */
+    public void printUserInfo() {
+        logger.info("User属性值：userName = {}, age = {}, address = {}", user.getUserName(), user.getAge(), user.getAddress());
+    }
+
+    /**
+     * 从数据库获取数据
+     */
     public void selectUser() {
+
         Connection conn = null;
         PreparedStatement ps = null;
-        logger.info("连接计数：{} | initialSize={} | maxActive={} | minIdle={} | maxWait={} | validationQuery={} | testWhileIdle={} | timeBetweenEvictionRunsMillis={} | testOnBorrow={} | testOnReturn={}",
-                dataSource.getConnectCount(),
-                dataSource.getInitialSize(), dataSource.getMaxActive(), dataSource.getMinIdle(), dataSource.getMaxWait(), dataSource.getValidationQuery(), null, dataSource.getTimeBetweenEvictionRunsMillis());
-
-
-
 
         try {
             conn = dataSource.getConnection();
             ps = conn.prepareStatement("select * from user_basic");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                System.out.println("从数据库查询的结果为：userName = " + rs.getString("user_name"));
+                logger.info("从数据库查询的结果为：userName = {}", rs.getString("user_name"));
             }
             ps.close();
             conn.close();
@@ -62,4 +80,5 @@ public class UserService {
             e.printStackTrace();
         }
     }
+
 }
