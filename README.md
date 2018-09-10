@@ -11,7 +11,7 @@ Apollo（阿波罗）是携程框架部门研发的分布式配置中心，能�
 > 注意： 由于数据库连接池这中组件的特殊性，它不支持动态更改已经初始化好的部分属性，例如：数据库连接地址、账号、密码
 
 # 如何运行本demo？
-本demo使用的Apollo版本为0.11.X，在此版本下，需要在apollo-core工程下面配置apollo服务端地址，并且需要自己打包apollo-core和apollo-client，所以需要使用本demo，需要在你的环境下使用0.11.X版本的源码，配置你的环境地质进行打包方可使用。默认情况下本demo依赖的apollo-core使用dev模式meta地址为dev.meta=http://localhost:8080。
+本demo使用的Apollo版本为0.11.X，在此版本下，需要在apollo-core工程下面配置apollo服务端地址，并且需要自己打包apollo-core和apollo-client，所以需要使用本demo，需要在你的环境下使用0.11.X版本的源码，配置你的环境地址进行打包方可使用。默认情况下本demo依赖的apollo-core使用dev模式meta地址为dev.meta=http://localhost:8080。
 - 配置你本机的apollo-core工程的dev.meta地址
 - 安装至你的maven仓库
 - 启动你本机的apollo服务端、管理台
