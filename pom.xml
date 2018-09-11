@@ -20,21 +20,21 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>5.0.8.RELEASE</version>
+            <version>3.2.3.RELEASE</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>5.0.8.RELEASE</version>
+            <version>3.2.3.RELEASE</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>5.0.8.RELEASE</version>
+            <version>3.2.3.RELEASE</version>
         </dependency>
 
         <dependency>
