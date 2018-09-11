@@ -29,6 +29,6 @@ Apollo（阿波罗）是携程框架部门研发的分布式配置中心，能�
     userName = 韩梅梅    
     age = 20    
     address = Beijing    
-> 注意：由于这里使用了数据库连接池来模拟生产应用，故需要配置数据库连接地址，在查询中使用了user_basic表，可替换为你自己的表具体参考demo代码自己修改[UserService.java](https://github.com/SiouWang/apollo-xml-demo/blob/master/src/main/java/com/example/service/UserService.java "UserService.java")
+> 注意：由于这里使用了数据库连接池来模拟生产应用，故需要配置数据库连接地址，在查询中使用了user_basic表，可使用demo提供的sql/h-user.sql SQL语句可替换为你自己的表。具体参考demo代码自己修改[UserService.java](https://github.com/SiouWang/apollo-xml-demo/blob/master/src/main/java/com/example/service/UserService.java "UserService.java")
 - 运行Main函数，观察控制台的输出
 > 也可以使用你现有的配置，只需要将本demo的resources/app.properties中的app.id改为你自己的appId即可
